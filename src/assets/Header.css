@@ -1,0 +1,66 @@
+header {
+  background: #458500;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+header svg {
+  color: #fff;
+  height: 30px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+header svg path {
+  fill: white;
+}
+
+header label {
+  right: 1.8rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  position: absolute;
+}
+
+header label,
+header label::before,
+header label::after {
+  display: block;
+  position: absolute;
+  content: '';
+  width: 30px;
+  height: 3.5px;
+  border-radius: 2px;
+  background-color: white;
+}
+
+header label::before {
+  top: 8px;
+}
+
+header label::after {
+  bottom: 8px;
+}
+
+header nav {
+  display: none;
+  background: #458500;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: calc(100vh - 50px);
+}
+
+header nav .navItem {
+  display: none;
+}
+/*# sourceMappingURL=style.css.map */
