@@ -4,29 +4,6 @@
   <div id="spinBackground"></div>
 </div>
 
-<!-- <div class="containerFullHeight">
-  <div class='authForms'>
-    <div class="manualAuth">
-      <div class="pseudoInput">
-        <input type="text" placeholder="Номер телефона или адрес почты" id='authLogin' />
-      </div>
-
-      <div class="pseudoInput">
-        <input type="password" placeholder="Пароль" id='authPassword' />
-        <input type="checkbox" id='passwordToggle' name='passwordToggle' hidden>
-        <label for="passwordToggle">
-          <img src="../assets/visibility_off_black_24dp.svg" alt="show password" id='passwordToggleIcon'>
-        </label>
-      </div>
-      <p class="forgotPassword"><a>Забыли пароль?</a></p>
-      <div class="authButtons">
-        <button class="logInButton" v-on:click="handleAuthorization">Войти</button>
-        <p>или</p>
-        <button class='createAccount' v-on:click="handleRegistration">Создать аккаунт</button>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <div class="containerFullHeight">
   <div class='authForms'>
@@ -59,7 +36,6 @@
 </template>
 
 <script>
-// import $ from "jquery"
 import { Spinner } from "spin.js";
 export default {
   name: "Authentication",
@@ -84,9 +60,11 @@ export default {
       this.$emit('switchPage', "Registration")
     },
     handleAuthorization() {
-      this.authorizationLoading = true;
-      this.createSpiner();
-      this.authorizationLoading = false;
+      this.$emit('switchPage', "TestForm")
+
+      // this.authorizationLoading = true;
+      // this.createSpiner();
+      // this.authorizationLoading = false;
     },
     createSpiner() {
       const opts = {
@@ -114,22 +92,7 @@ export default {
   },
   mounted() {
     this.createSpiner();
-    // let navMenu = $('#navMenu');
-    // $('#navButton').change(function(){
-    //   navMenu.slideToggle(500, function() {
-    //     $('.navItem').fadeToggle()
-    //   })
-    // })
-
-    // $('#passwordToggle').change(function() {
-    //   if($(this).prop('checked')===true) {
-    //     $('#authPassword').prop('type', 'text')
-    //     $('#passwordToggleIcon').prop('src', '../assets/visibility_black_24dp.svg')
-    //   } else {
-    //     $('#authPassword').prop('type', 'password')
-    //     $('#passwordToggleIcon').prop('src', '../assets/visibility_off_black_24dp.svg')
-    //   }
-    // })
+  
 
   },
 };

@@ -58,5 +58,6 @@ export default {
 </script>
 
 <style scoped>
-@import '../assets/TestForm.css'
+@import '../assets/TestForm.css';
+/* @import '../assets/materialize.min.css'; */
 </style>
