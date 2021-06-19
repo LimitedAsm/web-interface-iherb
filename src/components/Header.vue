@@ -12,14 +12,23 @@
         <path id="Path_29" d="M342.437.67a1.215 1.215 0 1 0 1.215 1.215A1.216 1.216 0 0 0 342.437.67m0 2.2a.985.985 0 1 1 .985-.985.988.988 0 0 1-.985.985" class="cls-3" data-name="Path 29" transform="translate(-297.064 -.583)"></path>
     </svg>
     <template v-if="autenticationUser">
-    <input hidden type="checkbox" name="navButton" id="navButton">
-    <label for="navButton">
-    </label>
-    <nav id='navMenu'>
-      <div class='navItem'>Энциклопедия</div>
-      <div class='navItem'>Профиль</div>
-      <div class='navItem'>Расписание приема БАД</div>
-    </nav>
+      <footer>
+        <button>
+            <img src="../assets/format_list_bulleted_white_24dp.svg" alt="">
+        </button>
+        
+        <div class="separator"></div>
+        
+        <button>
+            <img src="../assets/search_white_24dp.svg" alt="">
+        </button>
+        
+        <div class="separator"></div>
+        
+        <button>
+            <img src="../assets/account_circle_white_24dp.svg" alt="">
+        </button>
+      </footer>
   </template>  
 </header>
 </template>

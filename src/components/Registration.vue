@@ -1,8 +1,9 @@
 <template>
+<form name="form" id="form" hidden></form>
+
 <div class="containerFullHeight">
   <div class='authForms'>
     <div class="manualAuth">
-
       <div class="pseudoInput">
       <input
             v-model="user.first_name"
@@ -21,9 +22,11 @@
 
           <div class="pseudoInput">
             <input
+            form="form"
+            required
             v-model="user.email"
             placeholder="E-mail"
-            type="text"
+            type="email"
           />
       </div>
 
@@ -36,7 +39,7 @@
       </div>
 
         <div class="pseudoInput">
-        <input v-bind:type="pass" v-model="user.password" placeholder="Пароль" id='authPassword' />
+        <input form="form" v-bind:type="pass" v-model="user.password" placeholder="Пароль" id='authPassword' required/>
         <input type="checkbox" id='passwordToggle' name='passwordToggle' hidden>
         <label for="passwordToggle">
           
@@ -47,7 +50,7 @@
       </div>
 
       <div class="authButtons">
-        <button class="logInButton" v-on:click="handleRegistration">Создать аккаунт</button>
+        <button form="form" submit class="logInButton" v-on:click="handleRegistration">Создать аккаунт</button>
         <p>или</p>
         <button class='createAccount' v-on:click="handleAuthentication">Уже есть аккаунт</button>
       </div>
@@ -87,18 +90,18 @@ export default {
     },
     handleRegistration(){
       console.log(url)
-      fetch(`${url.data}user`, {
+      fetch(`${url.data}register/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(
           {
-            "email": this.email,
-            "password": this.password,
-            "first_name": this.first_name,
-            "last_name": this.last_name,
-            "uuid": this.last_name, ///??????
+            "email": this.user.email,
+            "password": this.user.password,
+            "first_name": this.user.first_name,
+            "last_name": this.user.last_name,
+            "phone": this.user.phone
           }
         )
       })

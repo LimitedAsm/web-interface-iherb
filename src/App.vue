@@ -28,7 +28,6 @@ import TestForm from './components/TestForm.vue'
 import Profile from './components/Profile.vue'
 import Schedule from './components/Schedule.vue'
 import Recomendation from './components/Recomendation.vue'
- 
 export default {
   name: 'App',
   components: {
