@@ -1,30 +1,37 @@
 <template>
-  <div v-show="this.authorizationLoading == true">
-    <div id="spin"></div>
-    <div id="spinBackground"></div>
+<div v-show="authorizationLoading == true">
+  <div id="spin"></div>
+  <div id="spinBackground"></div>
+</div>
+
+<div class="containerFullHeight">
+  <div class='authForms'>
+    <div class="manualAuth">
+      <div class="pseudoInput">
+        <input type="text" placeholder="Номер телефона или адрес почты" id='authLogin' />
+      </div>
+
+      <div class="pseudoInput">
+        <input type="password" placeholder="Пароль" id='authPassword' />
+        <input type="checkbox" id='passwordToggle' name='passwordToggle' hidden>
+        <label for="passwordToggle">
+          <img src="../assets/visibility_off_black_24dp.svg" alt="show password" id='passwordToggleIcon'>
+        </label>
+      </div>
+      <p class="forgotPassword"><a>Забыли пароль?</a></p>
+      <div class="authButtons">
+        <button class="logInButton" v-on:click="handleAuthorization">Войти</button>
+        <p>или</p>
+        <button class='createAccount' v-on:click="handleRegistration">Создать аккаунт</button>
+      </div>
+    </div>
   </div>
-  <div class="authenticationForm">
-    <div class="authenticationLable">Вход</div>
-    <input
-      class="login"
-      v-model="user.username"
-      placeholder="Логин"
-      type="text"
-    />
-    <input
-      class="password"
-      v-model="user.password"
-      placeholder="Пароль"
-      type="password"
-    />
-    <button class="authenticationButton" v-on:click="handleAuthorization">
-      Войти
-    </button>
-    <div class="message">{{ message }}</div>
-  </div>
+</div>
+<div class="message">{{ message }}</div>
 </template>
 
 <script>
+import $ from "jquery"
 import { Spinner } from "spin.js";
 export default {
   name: "Authentication",
@@ -37,13 +44,16 @@ export default {
       authorizationLoading: false,
     };
   },
-  emits: ["authorizationSuccess"],
+  emits: ["switchPage"],
   computed: {
     message() {
       return "";
     },
   },
   methods: {
+    handleRegistration(){
+      this.$emit('switchPage', "Registration")
+    },
     handleAuthorization() {
       this.authorizationLoading = true;
       this.createSpiner();
@@ -70,16 +80,32 @@ export default {
         position: "absolute", // Element positioning
       };
       const target = document.getElementById("spin");
-      console.log(target);
       new Spinner(opts).spin(target);
     },
   },
   mounted() {
     this.createSpiner();
+    let navMenu = $('#navMenu');
+    $('#navButton').change(function(){
+      navMenu.slideToggle(500, function() {
+        $('.navItem').fadeToggle()
+      })
+    })
+
+    $('#passwordToggle').change(function() {
+      if($(this).prop('checked')===true) {
+        $('#authPassword').prop('type', 'text')
+        $('#passwordToggleIcon').prop('src', '../assets/visibility_black_24dp.svg')
+      } else {
+        $('#authPassword').prop('type', 'password')
+        $('#passwordToggleIcon').prop('src', '../assets/visibility_off_black_24dp.svg')
+      }
+    })
+
   },
 };
 </script>
 
-<style>
-/* @import "../../node_modules/spin.js/spin.css"; */
+<style scoped>
+@import "../assets/Authentication.css";
 </style>

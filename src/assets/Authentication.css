@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+header {
+  background: #458500;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+header svg {
+  color: #fff;
+  height: 30px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+header svg path {
+  fill: white;
+}
+
+header label {
+  right: 1.8rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  position: absolute;
+}
+
+header label,
+header label::before,
+header label::after {
+  display: block;
+  position: absolute;
+  content: '';
+  width: 30px;
+  height: 3.5px;
+  border-radius: 2px;
+  background-color: white;
+}
+
+header label::before {
+  top: 8px;
+}
+
+header label::after {
+  bottom: 8px;
+}
+
+header nav {
+  z-index: 999999;
+  display: none;
+  background: #458500;
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  height: calc(100vh - 50px);
+}
+
+header nav .navItem {
+  display: none;
+}
+
+.containerFullHeight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 50px);
+  background-color: white;
+}
+
+.containerFullHeight .authForms {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 10px;
+  border: 2px solid #e5e5e5;
+  background-color: white;
+  width: calc(100% - 25px);
+  margin: 25px;
+}
+
+.containerFullHeight .authForms .manualAuth {
+  padding-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.containerFullHeight .authForms .manualAuth .accHead {
+  font-size: 1.2rem;
+  margin: 1.5rem;
+  font-weight: 500;
+}
+
+.containerFullHeight .authForms .manualAuth .pseudoInput {
+  border: 2px solid #e8e8e8;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  margin-bottom: 1rem;
+}
+
+.containerFullHeight .authForms .manualAuth .pseudoInput input, .containerFullHeight .authForms .manualAuth .pseudoInputhover, .containerFullHeight .authForms .manualAuth .pseudoInputfocus {
+  border: none;
+  outline: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.containerFullHeight .authForms .manualAuth .pseudoInput input {
+  height: 100%;
+  padding: 1rem 0 1rem 1rem;
+  width: calc(100% - 1rem);
+}
+
+.containerFullHeight .authForms .manualAuth .pseudoInput input::-webkit-input-placeholder {
+  color: #b5b5b5;
+}
+
+.containerFullHeight .authForms .manualAuth .pseudoInput input:-ms-input-placeholder {
+  color: #b5b5b5;
+}
+
+.containerFullHeight .authForms .manualAuth .pseudoInput input::-ms-input-placeholder {
+  color: #b5b5b5;
+}
+
+.containerFullHeight .authForms .manualAuth .pseudoInput input::placeholder {
+  color: #b5b5b5;
+}
+
+.containerFullHeight .authForms .manualAuth .pseudoInput label {
+  margin: 0 1rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 0;
+}
+
+.containerFullHeight .authForms .manualAuth .pseudoInput label img {
+  -webkit-filter: invert(57%) sepia(0%) saturate(1%) hue-rotate(241deg) brightness(94%) contrast(84%);
+          filter: invert(57%) sepia(0%) saturate(1%) hue-rotate(241deg) brightness(94%) contrast(84%);
+}
+
+.containerFullHeight .authForms .manualAuth .forgotPassword {
+  width: 80%;
+  margin-bottom: 1rem;
+}
+
+.containerFullHeight .authForms .manualAuth .forgotPassword a {
+  display: block;
+  text-align: center;
+  color: #6bd728;
+  -webkit-text-decoration-color: #6bd728;
+          text-decoration-color: #6bd728;
+
+}
+
+.containerFullHeight .authForms .manualAuth .authButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2rem;
+}
+
+.containerFullHeight .authForms .manualAuth .authButtons button {
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  width: 80%;
+}
+
+.containerFullHeight .authForms .manualAuth .authButtons button.logInButton {
+  background-color: #458500;
+  border: none;
+  color: white;
+}
+
+.containerFullHeight .authForms .manualAuth .authButtons button.createAccount {
+  border: 2px solid #e5e5e5;
+  background-color: white;
+}
+
+.containerFullHeight .authForms .manualAuth .authButtons p {
+  margin: 0.5rem;
+}
+
+.containerFullHeight .authForms hr {
+  border: none;
+  height: 2px;
+  background-color: #e5e5e5;
+  width: 90%;
+  margin: 1rem 0 1rem 5%;
+}
+
+.containerFullHeight .authForms .authWithSocials {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.containerFullHeight .authForms .authWithSocials .accHead {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 1.5rem;
+  font-weight: 500;
+}
+
+.containerFullHeight .authForms .authWithSocials p {
+  width: 90%;
+  line-height: 130%;
+  text-align: justify;
+}
+
+.containerFullHeight .authForms .authWithSocials p a {
+  color: unset;
+  -webkit-text-decoration-color: #6bd728;
+          text-decoration-color: #6bd728;
+  text-decoration-thickness: 2px;
+  display: inline-block;
+  font-weight: unset;
+}
+/*# sourceMappingURL=style.css.map */

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import mapGetters from "vuex"
+import { mapGetters } from "vuex"
 export default {
   name: "Profile",
   data(){
@@ -12,7 +12,7 @@ export default {
     }
   },
   methods: {
-    ...mapGetters(["getUsername", ""])
+    ...mapGetters(["getUsername"])
   }
 }
 </script>

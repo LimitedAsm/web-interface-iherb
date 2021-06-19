@@ -1,14 +1,17 @@
 <template>
-  <Header  v-if="page=='header'"></Header>
+  <Header></Header>
   <Authentication 
-    @authorizationSuccess="authorizationSuccess"
+    @switchPage="switchPage"
     v-if="page=='Authentication'"
   ></Authentication>
-  <Registration></Registration>
-  <TestForm></TestForm>
-  <Profile></Profile>
-  <Schedule></Schedule>
-  <Recomendation></Recomendation>
+  <Registration 
+    @switchPage="switchPage"
+    v-if="page=='Registration'"
+  ></Registration>
+  <TestForm v-if="page=='TestForm'"></TestForm>
+  <Profile v-if="page=='Profile'"></Profile>
+  <Schedule v-if="page=='Schedule'"></Schedule>
+  <Recomendation v-if="page=='Recomendation'"></Recomendation>
 </template>
 
 <script>
@@ -33,12 +36,12 @@ export default {
   },
   data() {
     return {
-      page: "header"
+      page: "Authentication"
     }
   },
   methods:{
-    authorizationSuccess(){
-      this.page = "Main"
+    switchPage(page){
+      this.page = page
     }
   }
 }
