@@ -1,5 +1,5 @@
 <template>
-<form name="form" id="form" hidden></form>
+<form name="form" id="form" hidden v-on:submit.prevent="onSubmit"></form>
 
 <div class="containerFullHeight">
   <div class='authForms'>
@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import {mapActions} from "vuex"
+import {mapMutations} from "vuex"
 import url from '../../config.js'
 export default {
   name: "Registration",
@@ -83,7 +83,8 @@ export default {
   },
   emits: ["switchPage"],
   methods: {
-    ...mapActions(["fetchRegistration"]),
+    ...mapMutations(["updateToken"]),
+    // ...mapActions(["fetchRegistration"]),
     handleAuthentication(){
       this.$emit('switchPage', "Authentication")
 
@@ -107,9 +108,45 @@ export default {
       })
       .then(
         async (response) => {
-          console.log(response);
-          if(response.message == "success"){
-            this.$emit('switchPage', "TestForm")
+          const responseJSON = await response.json();
+          if(responseJSON.message == "success"){
+
+
+            fetch(`${url.data}auth/`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(
+                {
+                  "username": this.user.email,
+                  "password": this.user.password,
+                }
+              )
+            })
+            .then(
+              async (response) => {
+                const token = await response.json()
+                if(token){
+                  await this.updateToken(token.token)
+                  this.$emit('switchPage', "TestForm")
+                }
+                else if(response.message == "error"){
+                  if (response.data.phone){
+                    this.message == "Данный номер телефона уже используется для другой учетной записи"
+                  }
+                  else if (response.data.email){
+                    this.message == "Данный почта уже используется для другой учетной записи"
+                  }
+                }
+              },
+              (reject) => {
+                console.log("Error: ", reject);
+                this.message = "Сервер недоступен обратитесь к системному администратору"
+              }
+            );
+    
+
           }
           else if(response.message == "error"){
             if (response.data.phone){

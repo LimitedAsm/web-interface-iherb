@@ -14,13 +14,16 @@ export default createStore({
     }
   },
   actions: {
-    token(context,token){
-      context.commit("updateToken", token)
-    }
+    // changeToken(context,token){
+    //   context.commit("updateToken", token)
+    // }
   },
   getters: {
     getUsername: state => {
       return state.username
+    },
+    getToken: state => {
+      return state.token
     }
   }
 })

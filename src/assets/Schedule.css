@@ -1,0 +1,144 @@
+.containerFloatHeight {
+  padding: 2rem 0 calc(2rem + 50px);
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  width: 100vw;
+}
+
+.containerFloatHeight .weekUsageInfo {
+  margin: 0 1rem;
+  padding: 1.5rem 0.5rem;
+  border-radius: 1rem;
+  border: 2px solid #c5c5c5;
+}
+
+.containerFloatHeight .weekUsageInfo .weekDayWrap {
+  border: none;         
+  color: unset;
+  font: unset;
+  display: block;
+  text-align: unset;
+  background-color: unset;
+  border-left: 2px solid #b80000;
+  padding-left: 0.5rem;
+  margin-left: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.containerFloatHeight .weekUsageInfo .weekDayWrap:first-child {
+  margin-top: 0;
+}
+
+.containerFloatHeight .weekUsageInfo .weekDayWrap .weekDay {
+  font-size: 1.5rem;
+  font-weight: 500;
+  position: relative;
+}
+
+.containerFloatHeight .weekUsageInfo .weekDayWrap .weekLastDay {
+  display: none;
+  font-weight: 400;
+  font-size: 1.2rem;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  color: #b80000;
+  margin: 0.5rem 0;
+}
+
+.containerFloatHeight .weekUsageInfo .weekDayWrap .weekDay[data-lastDay='true'] ~ .weekLastDay {
+  display: block;
+}
+
+.containerFloatHeight .weekUsageInfo .weekDayWrap hr {
+  border: none;
+  height: 2px;
+  background-color: #dcdcdc;
+  width: 90%;
+  margin: 0.5rem 0;
+}
+
+.containerFloatHeight .weekUsageInfo .weekDayWrap .weekMed {
+  margin-bottom: 0.5rem;
+}
+
+.containerFloatHeight .weekUsageInfo .weekDayWrap .weekMed::before {
+  content: '•';
+}
+
+.containerFloatHeight .dailyUsageInfo {
+  margin: 0 2rem;
+  padding: 1.5rem 0.5rem;
+  border-radius: 2rem 2rem 1rem 1rem;
+  border: 2px solid #c5c5c5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.containerFloatHeight .dailyUsageInfo .dailyHeader {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.containerFloatHeight .dailyUsageInfo .mainHeader {
+  -webkit-text-decoration-color: #b80000;
+          text-decoration-color: #b80000;
+  text-decoration-thickness: 2px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.containerFloatHeight .dailyUsageInfo .morningHeader {
+  color: #3b9900;
+}
+
+.containerFloatHeight .dailyUsageInfo .middayHeader {
+  color: #ff4800;
+}
+
+.containerFloatHeight .dailyUsageInfo .eveningHeader {
+  color: #a8005d;
+}
+
+.containerFloatHeight .dailyUsageInfo .dailyList {
+  width: 80%;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.containerFloatHeight .dailyUsageInfo .dailyList p {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.containerFloatHeight .dailyUsageInfo .dailyList p::before {
+  content: '•';
+  margin-right: 1ch;
+}
+
+.containerFloatHeight .dailyUsageInfo .dailyList p strong {
+  text-decoration: underline;
+  -webkit-text-decoration-color: #b80000;
+          text-decoration-color: #b80000;
+  text-decoration-thickness: 2px;
+}
+
+.containerFloatHeight .dailyUsageInfo hr {
+  border: none;
+  height: 2px;
+  background-color: #dcdcdc;
+  width: 90%;
+  margin: 1rem 0 1rem 5%;
+}

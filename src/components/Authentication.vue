@@ -4,15 +4,13 @@
   <div id="spinBackground"></div>
 </div>
 
-
 <div class="containerFullHeight">
   <div class='authForms'>
     <div class="manualAuth">
-      <form name="form" id="form" hidden></form>
+      <form name="form" id="form" hidden v-on:submit.prevent="onSubmit"> </form>
       <div class="pseudoInput">
         <input form="form" required v-model="user.username" type="email" placeholder="Номер телефона или адрес почты" id='authLogin' />
       </div>
-
       <div class="pseudoInput">
         <input form="form" required v-model="user.password" v-bind:type="pass" placeholder="Пароль" id='authPassword' />
         <input type="checkbox" id='passwordToggle' name='passwordToggle' hidden>
@@ -39,6 +37,7 @@
 import url from '../../config.js'
 
 import { Spinner } from "spin.js";
+import { mapMutations } from 'vuex';
 export default {
   name: "Authentication",
   data() {
@@ -54,6 +53,7 @@ export default {
   },
   emits: ["switchPage"],
   methods: {
+    ...mapMutations(["updateToken"]),
     handleRegistration(){
       this.$emit('switchPage', "Registration")
     },
@@ -103,8 +103,10 @@ export default {
       })
       .then(
         async (response) => {
-          console.log(response);
-          if(response.message == "success"){
+          const token = await response.json()
+          console.log(token);
+          if(token){
+            this.updateToken(token.token)
             this.$emit('switchPage', "Schedule")
           }
           else if(response.message == "error"){

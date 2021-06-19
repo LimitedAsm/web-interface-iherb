@@ -1,5 +1,6 @@
 <template>
   <Header
+    @switchPage="switchPage"
     :page="this.page"
   ></Header>
   <Authentication 
@@ -41,11 +42,12 @@ export default {
   },
   data() {
     return {
-      page: "Authentication"
+      page: "Schedule"
     }
   },
   methods:{
     switchPage(page){
+      console.log(page)
       this.page = page
     }
   }

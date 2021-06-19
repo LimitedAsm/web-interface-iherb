@@ -1,10 +1,10 @@
 <template>
 <div class="mainTestIner">
-  <p class="testQuesion">{{question}}</p>
+  <p class="testQuesion">{{ question.question }}?</p>
   <div v-if="type == 'radio'">
-    <div class="testIner" v-for="ansver in ansvers" :key="ansver">
-      <input name="ansver" class="testRadio" type="radio">
-      <p class="testAnsver">{{ ansver }}</p>
+    <div class="testIner" v-for="answer in question.answers" :key="answer">
+      <input v-model="chosenAnswer" v-bind:value="answer.name"  name="ansver" class="testRadio" type="radio">
+      <p class="testAnsver">{{ answer.name }}</p>
     </div>
   </div>
   <div v-if="type == 'input'">
@@ -15,46 +15,102 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import url from '../../config.js'
+
+
 export default {
   name: "TestForm",
   data(){
     return {
-      questions: [{
-          question:"Укажите ваш пол",
-          ansvers: ["Мужчина", "Женчина"],
-          type: "radio"
-        },
-        {
-          question:"Укажите ваш вес",
-          ansvers: [],
-          type: "input"
-        }],
-      step: 0
+      chosenAnswer: '',
+      question: {},
+      questionID: 0,
+      lastQuestion: false
+    }
+  },
+  computed:{
+    ansverID(){
+      this.question.answers.forEach(element => {
+        if (element.name == this.chosenAnswer){
+          return (element.id)
+        }
+      });
+      return 0
     }
   },
   emits: ["switchPage"],
-  computed: {
-    question(){
-      return this.questions[this.step].question
-    },
-    ansvers(){
-      return this.questions[this.step].ansvers
-    },
-    type(){
-      return this.questions[this.step].type
-    },
-
-  },
   methods: {
+    ...mapGetters(["getToken"]),
     stepsOverflow(){
-      this.step++
-      if (this.step >= this.questions.length){
-        this.$emit('switchPage', "Recomendation");
+      this.fetchQuestion()
+    },
+    fetchQuestion(){
+      let fetchUrl
+      console.log(this.chosenAnswer)
+      console.log(this.answerID)
+      if(this.questionID == 0){
+        fetchUrl = `${url.data}get-question/`
       }
+      else{
+        fetchUrl = `${url.data}get-question/?question_id=${this.questionID}&answer_id=${this.answerID}`
+      }
+      
+      console.log(this.getToken())
+      fetch(fetchUrl, {
+        method: 'GET',
+        headers: {
+          Authorization: "Token " + this.getToken(),
+        },
+      })
+      .then(
+        async (response) => {
+          const responsJSON = await response.json();
+          this.question = responsJSON
+          console.log(responsJSON)
+          if(this.lastQuestion == true){
+            this.$emit('switchPage', "Recomendation");
+          }
+          else if(responsJSON.isFinal == true){
+            this.lastQuestion = true;
+          } 
+        },
+        (reject) => {
+          console.log("Error: ", reject);
+          this.message = "Сервер недоступен"
+        }
+      );
     }
+  },
+  async beforeCreate(){
+   fetch(`${url.data}get-question/`, {
+        method: 'GET',
+        headers: {
+          Authorization: "Token " + this.getToken(),
+        },
+      })
+      .then(
+        async (response) => {
+          const responsJSON = await response.json();
+          this.question = responsJSON
+          console.log(responsJSON)
+          if(this.lastQuestion == true){
+            this.$emit('switchPage', "Recomendation");
+          }
+          else if(responsJSON.isFinal == true){
+            this.lastQuestion = true;
+          } 
+        },
+        (reject) => {
+          console.log("Error: ", reject);
+          this.message = "Сервер недоступен"
+        }
+      );
   }
-
 }
+
+
+
 </script>
 
 <style scoped>
