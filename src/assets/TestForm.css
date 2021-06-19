@@ -1,6 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
 .testIner{
-    margin-left: auto;
+    /* margin-left: auto;
     margin-right: auto;
     margin-top: auto;
-    margin-bottom: auto;
+    margin-bottom: auto; */
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: row;
+    margin-left: 8vw;
 }
+
+.mainTestIner{
+    margin-top: 5vh;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+}
+
+.mainTestIner .testButton{
+    font-family: 'Roboto', sans-serif;
+    width: 40vw;
+    background-color: #458500;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    height: 7vh;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2em;
+}
+
+.mainTestIner .testIner .testRadio{
+    border: 0px;
+    width: 2.5em;
+    height: 2.5em;
+    border: 2px solid #458500;
+
+   background-color: #458500;
+   margin-bottom: 2vh;
+}
+
+.mainTestIner .testQuesion{
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 2vh;
+}
+
+.mainTestIner .testAnsver{
+    margin-left: 3vw;
+    font-size: 1.5em
+}
+
+
+.pseudoInput {
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #e8e8e8;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 80%;
+    margin-bottom: 1rem;
+  }
+  
+ .pseudoInput input, .pseudoInputhover, .pseudoInputfocus {
+    border: none;
+    outline: none;
+    background-image: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  
+ .pseudoInput input {
+    height: 100%;
+    padding: 1rem 0 1rem 1rem;
+    width: calc(100% - 1rem);
+  }
+  
+  .pseudoInput input::-webkit-input-placeholder {
+    color: #b5b5b5;
+  }
+  
+  .pseudoInput input:-ms-input-placeholder {
+    color: #b5b5b5;
+  }
+  
+  .pseudoInput input::-ms-input-placeholder {
+    color: #b5b5b5;
+  }
+  
+  .pseudoInput input::placeholder {
+    color: #b5b5b5;
+  }
+  
+  .pseudoInput label {
+    margin: 0 1rem;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    font-size: 0;
+  }

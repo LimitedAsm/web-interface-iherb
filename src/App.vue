@@ -8,7 +8,10 @@
     @switchPage="switchPage"
     v-if="page=='Registration'"
   ></Registration>
-  <TestForm v-if="page=='TestForm'"></TestForm>
+  <TestForm 
+    @switchPage="switchPage"
+    v-if="page=='TestForm'"
+  ></TestForm>
   <Profile v-if="page=='Profile'"></Profile>
   <Schedule v-if="page=='Schedule'"></Schedule>
   <Recomendation v-if="page=='Recomendation'"></Recomendation>
@@ -36,7 +39,7 @@ export default {
   },
   data() {
     return {
-      page: "Authentication"
+      page: "TestForm"
     }
   },
   methods:{
