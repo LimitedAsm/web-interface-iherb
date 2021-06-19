@@ -1,6 +1,6 @@
 <template>
   <div class="productFrame" v-for="product in products" :key="product">
-    <img src='../assets/10.jpg' width="100" height="100">
+    <img v-bind:src="product.img">
     <p>{{ product.name }}</p>
     <p>{{ product.desc}}</p>
     <p>{{ product.course }}</p>
@@ -11,6 +11,7 @@
 export default {
   name:"Recomendation",
   computed: {
+    
     products(){
       let prod = [{
         img: "../assets/1.png",

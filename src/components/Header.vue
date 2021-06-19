@@ -16,21 +16,15 @@
   <nav id='navMenu'>
     <div class='navItem'>Энциклопедия</div>
     <div class='navItem'>Профиль</div>
-    <div class='navItem'>Энциклопедия</div>
+    <div class='navItem'>Расписание приема БАД</div>
   </nav>
 </header>
 </template>
 
 <script>
 import $ from 'jquery'
-
 export default {
   name: "Header",
-  data(){
-    return{
-        
-    }
-  },
   mounted(){
     let navMenu = $('#navMenu');
     $('#navButton').change(function(){

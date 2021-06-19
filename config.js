@@ -5,4 +5,7 @@ const config = {
   VERSION: "v1",
 };
 
-export const url = `${config.PROTOCOL}://${config.HOST}:${config.PORT}/api/${config.VERSION}/`
+const url = `${config.PROTOCOL}://${config.HOST}:${config.PORT}/api/${config.VERSION}/`
+
+
+exports.data = url
