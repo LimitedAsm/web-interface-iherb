@@ -6,7 +6,7 @@
       </button>
       <div class="separator"></div>
       <button v-bind:class="{hover: isHandbook}" v-on:click="handleHandbook">
-        <img src="../assets/format_list_bulleted_white_24dp.svg" alt="">
+        <img src="../assets/window_white_24dp.svg" alt="">
       </button>
       <div class="separator"></div>
       <button v-bind:class="{hover: isProfile}" v-on:click="handleProfile">

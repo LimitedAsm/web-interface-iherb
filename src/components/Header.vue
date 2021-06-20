@@ -17,13 +17,6 @@
 import $ from 'jquery'
 export default {
   name: "Header",
-  props: ["page"],
-  emits: ["switchPage"],
-  computed:{
-    autenticationUser(){
-      return (this.page!='Authentication' && this.page!='Registration')
-    },
-  },
 
   mounted(){
     let navMenu = $('#navMenu');

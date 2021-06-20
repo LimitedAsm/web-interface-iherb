@@ -1,9 +1,6 @@
 <template>
+  <Footer @switchPage="switchPage"></Footer>
   <Header></Header>
-  <Footer 
-    @switchPage="switchPage"
-    :page="this.page"
-  ></Footer>
   <Authentication 
     @switchPage="switchPage"
     v-if="page=='Authentication'"
@@ -51,7 +48,7 @@ export default {
   },
   data() {
     return {
-      page: "Authentication"
+      page: "Registration"
     }
   },
   methods:{
