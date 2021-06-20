@@ -73,7 +73,7 @@ export default {
           const responsJSON = await response.json();
           this.question = responsJSON
           console.log(responsJSON)
-          if(this.lastQuestion == true){
+          if(responsJSON.message == "success"){
             this.$emit('switchPage', "Recomendation");
           }
           else if(responsJSON.isFinal == true){
