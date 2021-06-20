@@ -1,5 +1,8 @@
 <template>
-  <div></div>
+  <p>{{ username() }}</p>
+  <button :click="handlePassTest">Пройти тест</button>
+  <button>Изменить пароль</button>
+
 </template>
 
 <script>
@@ -11,8 +14,17 @@ export default {
       
     }
   },
+  emits: ["switchPage"],
+  computed: {
+    username(){
+      return this.getUsername
+    }
+  },
   methods: {
-    ...mapGetters(["getUsername"])
+    ...mapGetters(["getUsername"]),
+    handlePassTest(){
+      this.$emit('switchPage', "TestFrom")
+    }
   }
 }
 </script>

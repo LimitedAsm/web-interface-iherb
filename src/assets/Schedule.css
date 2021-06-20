@@ -33,7 +33,7 @@
 .containerFloatHeight .weekUsageInfo .weekDayWrap .weekDay {
   font-size: 1.5rem;
   font-weight: 500;
-  position: relative;
+  /* position: relative; */
 }
 
 .containerFloatHeight .weekUsageInfo .weekDayWrap .weekLastDay {
@@ -68,8 +68,9 @@
 }
 
 .containerFloatHeight .dailyUsageInfo {
+  position: relative;
   margin: 0 2rem;
-  padding: 1.5rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   border-radius: 2rem 2rem 1rem 1rem;
   border: 2px solid #c5c5c5;
   display: -webkit-box;
@@ -141,4 +142,19 @@
   background-color: #dcdcdc;
   width: 90%;
   margin: 1rem 0 1rem 5%;
+}
+
+.containerFloatHeight .dailyUsageInfo .closeDailyUsageInfo {
+  border: none;
+  background-color: unset;
+  color: unset;
+  font: unset;
+  text-align: unset;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  background-image: url("./highlight_off_black_24dp.svg");
+  width: 2rem;
+  height: 2rem;
+  background-size: contain;
 }

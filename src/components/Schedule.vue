@@ -7,32 +7,32 @@
 
 <div v-if="scheduleFormat == 'day'" class="containerFloatHeight">
   <div class="dailyUsageInfo">
+    <button v-on:click="handleSwithToWeek" class="closeDailyUsageInfo"></button>
     <div class="dailyHeader mainHeader">
-      Понедельник
+      {{ day }}
     </div>
+
 
     <div class="dailyHeader morningHeader">
       Утром
     </div>
-
     <div class='dailyList'>
       <p>Solgar, Комплекс кверцетина с Ester-C Plus - <strong>перед</strong> едой</p>
       <p>Now Foods - <strong>во время</strong> еды</p>
       <p>Solgar - <strong>после</strong> еды</p>
     </div>
-
     <hr>
 
     <div class="dailyHeader middayHeader">
       Днём
     </div>
-
     <div class='dailyList'>
       <p>Solgar - <strong>перед</strong> едой</p>
       <p>Now Foods, кверцетин с бромелаином - <strong>во время</strong> еды</p>
       <p>Solgar - <strong>после</strong> еды</p>
     </div>
     <hr>
+
     <div class="dailyHeader eveningHeader">
       Вечером
     </div>
@@ -41,34 +41,18 @@
       <p>Now Foods - <strong>во время</strong> еды</p>
       <p>Solgar - <strong>после</strong> еды</p>
     </div>
+
+
   </div>
 </div>
 
 
 <div v-else-if="scheduleFormat == 'week'" class="containerFloatHeight">
   <div class="weekUsageInfo">
-    <button class="weekDayWrap">
-    <p class="weekDay">
-      Вторник
-    </p>
-    <p class="weekLastDay">
-      Последний день курса!
-    </p>
-    <hr>
-    <div class="weekMeds">
-      <p class="weekMed">
-        Solgar, Комплекс кверцетина с Ester-C Plus
+    <button v-for="date in this.dates" :key="date" v-on:click="handleSwithToDay(date)" class="weekDayWrap">
+      <p class="weekDay">
+        {{ date }}
       </p>
-      <p class="weekMed">
-        Now Foods, кверцетин с бромелаином
-      </p>
-    </div>
-  </button>
-  <div class="weekDayWrap">
-      <p class="weekDay" data-lastDay='true'>
-        Среда
-      </p>
-
       <p class="weekLastDay">
         Последний день курса!
       </p>
@@ -81,7 +65,7 @@
           Now Foods, кверцетин с бромелаином
         </p>
       </div>
-    </div>
+    </button>
   </div>
 </div>
 
@@ -110,20 +94,40 @@ export default {
   name: "Schedule",
   data(){
     return{
-      scheduleFormat: "week" 
+      day: "Сегодня",
+      scheduleFormat: "day" 
     }
   },
-  methods: {
-    switchFormat(){
-      if(this.scheduleFormat == "day"){
-        this.scheduleFormat = "week"
-      }
-      else{
-        this.scheduleFormat = "day"
-      }
-    }
-  },
+  emits: ["switchPage"],
   computed: {
+    dates(){
+      let dates = []
+      let today = new Date;
+      dates.push("Сегодня");
+      dates.push("Завтра");
+      let date = today.getDay() + 2
+      for(let i = 0; i < 6; i++){
+        switch(date) {
+          case 0: dates.push("Воскресенье");
+          break
+          case 1: dates.push("Понедельник");
+          break
+          case 2: dates.push("Вторинк");
+          break
+          case 3: dates.push("Среда");
+          break 
+          case 4: dates.push("Четверг");
+          break 
+          case 5: dates.push("Пятница");
+          break 
+          case 6: dates.push("Суббота");
+          break
+          default: date = date - 8 ;
+        }
+        date++
+      }
+      return dates
+    },
     medicaments(){
       return [{
         name: "kalifornia gold омега 3",
@@ -131,8 +135,17 @@ export default {
         dosa: "2 таблетки"
       }]
     }
-  }
-
+  },
+  methods: {
+    handleSwithToDay(day){
+      this.day = day
+      this.scheduleFormat = "day"
+    },
+    handleSwithToWeek(){
+      this.day = ""
+      this.scheduleFormat = "week"
+    },
+  },
 }
 </script>
 

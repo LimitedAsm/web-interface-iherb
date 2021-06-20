@@ -1,10 +1,10 @@
 <template>
-  <Header
+  <Header></Header>
+  <Footer 
     @switchPage="switchPage"
     :page="this.page"
-  ></Header>
+  ></Footer>
   <Authentication 
-  
     @switchPage="switchPage"
     v-if="page=='Authentication'"
   ></Authentication>
@@ -16,9 +16,16 @@
     @switchPage="switchPage"
     v-if="page=='TestForm'"
   ></TestForm>
-  <Profile v-if="page=='Profile'"></Profile>
-  <Schedule v-if="page=='Schedule'"></Schedule>
+  <Profile 
+    @switchPage="switchPage"
+    v-if="page=='Profile'">
+  </Profile>
+  <Schedule 
+    @switchPage="switchPage"
+    v-if="page=='Schedule'"
+  ></Schedule>
   <Recomendation v-if="page=='Recomendation'"></Recomendation>
+
 </template>
 
 <script>
@@ -29,6 +36,7 @@ import TestForm from './components/TestForm.vue'
 import Profile from './components/Profile.vue'
 import Schedule from './components/Schedule.vue'
 import Recomendation from './components/Recomendation.vue'
+import Footer from './components/Footer.vue'
 export default {
   name: 'App',
   components: {
@@ -39,15 +47,15 @@ export default {
     Profile,
     Schedule,
     Recomendation,
+    Footer
   },
   data() {
     return {
-      page: "Schedule"
+      page: "Authentication"
     }
   },
   methods:{
     switchPage(page){
-      console.log(page)
       this.page = page
     }
   }

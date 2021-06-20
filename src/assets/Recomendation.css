@@ -1,6 +1,115 @@
-.productFrame{
+/* .productFrame{
   width: 50vw;
   border: 1px solid;
   margin-left: auto;
   margin-right: auto;
+} */
+.containerFloatHeight .recomended {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.containerFloatHeight .recomended .recomendedHeader {
+  font-size: 1.5rem;
+  font-weight: 500;
+  width: 70%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.containerFloatHeight .recomended .prodCard {
+  border-radius: 10px;
+  border: 2px solid #c5c5c5;
+  width: 80%;
+  margin-bottom: 2rem;
+}
+
+.containerFloatHeight .recomended .prodCard:last-of-type {
+  margin-bottom: 0;
+}
+
+.containerFloatHeight .recomended .prodCard .mainInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.containerFloatHeight .recomended .prodCard .mainInfo img {
+  width: min(450px, 100%);
+  border-radius: 10px;
+}
+
+.containerFloatHeight .recomended .prodCard .mainInfo hr {
+  border: none;
+  height: 2px;
+  background-color: #c5c5c5;
+  width: 90%;
+  margin: 1rem 0;
+}
+
+.containerFloatHeight .recomended .prodCard .mainInfo .shopDesc {
+  position: relative;
+  padding: 1rem;
+  padding-top: 0 !important;
+}
+
+.containerFloatHeight .recomended .prodCard .mainInfo .shopDesc .prodMainName {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.containerFloatHeight .recomended .prodCard .mainInfo .shopDesc .prodSecondaryName {
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  width: 80%;
+}
+
+.containerFloatHeight .recomended .prodCard .mainInfo .shopDesc .prodPrice {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+.containerFloatHeight .recomended .prodCard .mainInfo .shopDesc .prodPrice p::before {
+  content: '₽';
+}
+
+.containerFloatHeight .recomended .prodCard .mainInfo .shopDesc .prodPrice .prodFullPrice {
+  font-weight: 500;
+}
+
+.containerFloatHeight .recomended .prodCard .mainInfo .shopDesc .prodPrice .prodPartPrice {
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+
+.containerFloatHeight .recomended .prodCard .prodDesc {
+  padding: 1rem;
+  padding-top: 0 !important;
+}
+
+.containerFloatHeight .recomended .prodCard .prodDesc p::before {
+  content: '•';
+  margin-right: 1ch;
+}
+
+.containerFloatHeight .recomended .prodCard .prodUseInstruction {
+  padding: 1rem;
 }

@@ -10,21 +10,6 @@
       <path id="Path_28" d="M347.984 6.423l-.274-.409a.352.352 0 0 0 .237-.347c0-.24-.17-.384-.454-.384h-.414c-.062 0-.075.037-.075.069v1.1c0 .046.025.069.075.069h.16c.05 0 .075-.023.075-.069v-.4h.085l.275.419a.107.107 0 0 0 .095.05h.151a.074.074 0 0 0 .068-.029.067.067 0 0 0 0-.068m-.336-.755c0 .085-.048.121-.159.121h-.175v-.243h.172c.115 0 .162.035.162.121" class="cls-3" data-name="Path 28" transform="translate(-302.097 -4.6)"></path>
       <path id="Path_29" d="M342.437.67a1.215 1.215 0 1 0 1.215 1.215A1.216 1.216 0 0 0 342.437.67m0 2.2a.985.985 0 1 1 .985-.985.988.988 0 0 1-.985.985" class="cls-3" data-name="Path 29" transform="translate(-297.064 -.583)"></path>
   </svg>
-  <template v-if="autenticationUser">
-    <footer>
-      <button v-on:click="handleSchedule">
-        <img src="../assets/format_list_bulleted_white_24dp.svg" alt="">
-      </button>
-      <div class="separator"></div>
-      <button v-on:click="handleHandbook">
-        <img src="../assets/search_white_24dp.svg" alt="">
-      </button>
-      <div class="separator"></div>
-      <button v-on:click="handleProfile">
-        <img src="../assets/account_circle_white_24dp.svg" alt="">
-      </button>
-    </footer>
-  </template>  
 </header>
 </template>
 
@@ -39,17 +24,7 @@ export default {
       return (this.page!='Authentication' && this.page!='Registration')
     },
   },
-  methods:{
-    handleSchedule(){
-      this.$emit('switchPage', "Schedule")
-    },
-    handleHandbook(){
-      this.$emit('switchPage', "Handbook")
-    },
-    handleProfile(){
-      this.$emit('switchPage', "Profile")
-    }
-  },
+
   mounted(){
     let navMenu = $('#navMenu');
     $('#navButton').change(function(){

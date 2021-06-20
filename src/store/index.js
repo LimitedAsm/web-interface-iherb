@@ -14,9 +14,7 @@ export default createStore({
     }
   },
   actions: {
-    // changeToken(context,token){
-    //   context.commit("updateToken", token)
-    // }
+
   },
   getters: {
     getUsername: state => {
