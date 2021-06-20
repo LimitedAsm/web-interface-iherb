@@ -26,13 +26,10 @@ export default {
   },
   computed:{
     answers(){
-      console.log(this.question.answers)
       return this.question.answers
     },
     questionID(){
-      if(this.question){
-        return this.question.id
-      }
+
       return 0
     },
   },
@@ -47,11 +44,16 @@ export default {
         }
       });
       let fetchUrl
-      if(this.questionID == 0){
+
+      let questionID
+      if(this.question){
+        questionID = this.question.id
+      }
+      if(questionID == 0){
         fetchUrl = `${url.data}get-question/`
       }
       else{
-        fetchUrl = `${url.data}get-question/?question_id=${this.questionID}&answer_id=${answerID}`
+        fetchUrl = `${url.data}get-question/?question_id=${questionID}&answer_id=${answerID}`
       }
       fetch(fetchUrl, {
         method: 'GET',
@@ -67,9 +69,6 @@ export default {
           if(responsJSON.message == "success"){
             this.$emit('switchPage', "Recomendation");
           }
-          else if(responsJSON.isFinal == true){
-            this.lastQuestion = true;
-          } 
         },
         (reject) => {
           console.log("Error: ", reject);
