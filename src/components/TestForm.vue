@@ -8,7 +8,7 @@
   <!-- <div v-if="type == 'input'">
     <div class="pseudoInput"><input name="ansver" type="text"></div>
   </div> -->
-  <button class="testButton" v-on:click="stepsOverflow">Далее</button>
+  <button class="testButton" v-on:click="fetchQuestion">Далее</button>
 </div>
 </template>
 
@@ -35,32 +35,23 @@ export default {
       }
       return 0
     },
-    answerID(){
-      this.question.answers.forEach(element => {
-        console.log(element)
-        if (element.name == this.chosenAnswer){
-          console.log(element)
-          return (element.id)
-        }
-      });
-      return 0
-    }
   },
   emits: ["switchPage"],
   methods: {
     ...mapGetters(["getToken"]),
-    stepsOverflow(){
-      this.fetchQuestion()
-    },
     fetchQuestion(){
+      let answerID
+      this.question.answers.forEach(element => {
+        if (element.name == this.chosenAnswer){
+          answerID = element.id;
+        }
+      });
       let fetchUrl
-      console.log(this.questionID)
-      console.log(this.answerID)
       if(this.questionID == 0){
         fetchUrl = `${url.data}get-question/`
       }
       else{
-        fetchUrl = `${url.data}get-question/?question_id=${this.questionID}&answer_id=${this.answerID}`
+        fetchUrl = `${url.data}get-question/?question_id=${this.questionID}&answer_id=${answerID}`
       }
       fetch(fetchUrl, {
         method: 'GET',
