@@ -1,6 +1,6 @@
 <template>
 <div class="mainTestIner">
-  <p class="testQuesion">{{ question.question }}?</p>
+  <p class="testQuesion">{{ question.question }}</p>
   <div class="testIner" v-for="answer in answers" :key="answer">
     <input required v-model="chosenAnswer" v-bind:value="answer.name"  name="ansver" class="testRadio" type="radio">
     <p class="testAnsver">{{ answer.name }}</p>
@@ -35,7 +35,7 @@ export default {
       }
       return 0
     },
-    ansverID(){
+    answerID(){
       this.question.answers.forEach(element => {
         console.log(element)
         if (element.name == this.chosenAnswer){
